@@ -46,7 +46,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
                 ),
                 onPressed: () {
                   setState(() {
-                    bilangan % 2 == 0 ? hasil = 'Genap' : hasil = 'Ganjil';
+                    int.parse(_numberController.text) % 2 == 0 ? hasil = 'Genap' : hasil = 'Ganjil';
                   });
                 },
                 child: const Text('Cek Angka')),
