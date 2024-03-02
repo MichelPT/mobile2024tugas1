@@ -1,127 +1,138 @@
 import 'package:flutter/material.dart';
 import 'halamanUtama.dart';
 
-class calculatorPage extends StatefulWidget {
-  const calculatorPage({Key? key}) : super(key: key);
+class CalculatorPage extends StatefulWidget {
+  const CalculatorPage({Key? key}) : super(key: key);
 
   @override
-  State<calculatorPage> createState() => _calculatorPageState();
+  State<CalculatorPage> createState() => _calculatorPageState();
 }
 
-class _calculatorPageState extends State<calculatorPage> {
+class _calculatorPageState extends State<CalculatorPage> {
   dynamic displaytxt = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
-        title: Text('Kalkulator'),
-        backgroundColor: Colors.blue,
+        title: const Text('Kalkulator'),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         actions: <Widget>[
-          IconButton(icon: const Icon(Icons.logout), onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return HalamanUtama();
-              }), (route) => false,
-            );
-          },),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const HalamanUtama();
+                }),
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-          child: Card(
-            elevation: 50,
-            shadowColor: Colors.black,
-            color: Colors.greenAccent[100],
-            child: SizedBox(
-              width: 450,
-              height: 580,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  // Display Kalkulator
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Padding(padding: const EdgeInsets.all(10.0),
-                          child: Text('$text',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 80,
-                            ),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: SizedBox(
+            width: 450,
+            height: 580,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                // Display Kalkulator
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          '$text',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 80,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      calculator('AC',Colors.grey,Colors.black),
-                      calculator('+/-',Colors.grey,Colors.black),
-                      calculator('%',Colors.grey,Colors.black),
-                      calculator('/',Colors.amber,Colors.white),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      calculator('7',Colors.grey,Colors.white),
-                      calculator('8',Colors.grey,Colors.white),
-                      calculator('9',Colors.grey,Colors.white),
-                      calculator('x',Colors.amber,Colors.white),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      calculator('4',Colors.grey,Colors.white),
-                      calculator('5',Colors.grey,Colors.white),
-                      calculator('6',Colors.grey,Colors.white),
-                      calculator('-',Colors.amber,Colors.white),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      calculator('1',Colors.grey,Colors.white),
-                      calculator('2',Colors.grey,Colors.white),
-                      calculator('3',Colors.grey,Colors.white),
-                      calculator('+',Colors.amber,Colors.white),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      //this is button Zero
-                      ElevatedButton(
-                        // padding: EdgeInsets.fromLTRB(34, 20, 128, 20),
-                        onPressed: (){
-                          calculation('0');
-                        },
-                        // shape: StadiumBorder(),
-                        child: Text('0',
-                          style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.white),
-                        ),
-                        // color: Colors.grey[850],
                       ),
-                      calculator('.',Colors.grey,Colors.white),
-                      calculator('=',Colors.amber,Colors.white),
                     ],
                   ),
-                  SizedBox(height: 10,),
-                ],
-              ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    calculator('AC', Colors.grey, Colors.black),
+                    calculator('+/-', Colors.grey, Colors.black),
+                    calculator('%', Colors.grey, Colors.black),
+                    calculator('/', Colors.amber, Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    calculator('7', Colors.grey, Colors.black),
+                    calculator('8', Colors.grey, Colors.black),
+                    calculator('9', Colors.grey, Colors.black),
+                    calculator('x', Colors.amber, Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    calculator('4', Colors.grey, Colors.black),
+                    calculator('5', Colors.grey, Colors.black),
+                    calculator('6', Colors.grey, Colors.black),
+                    calculator('-', Colors.amber, Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    calculator('1', Colors.grey, Colors.black),
+                    calculator('2', Colors.grey, Colors.black),
+                    calculator('3', Colors.grey, Colors.black),
+                    calculator('+', Colors.amber, Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    //this is button Zero
+                    ElevatedButton(
+                      // padding: EdgeInsets.fromLTRB(34, 20, 128, 20),
+                      onPressed: () {
+                        calculation('0');
+                      },
+                      // shape: StadiumBorder(),
+                      child: Text(
+                        '0',
+                        style: TextStyle(fontSize: 35, color: Colors.black),
+                      ),
+                      // color: Colors.grey[850],
+                    ),
+                    calculator('.', Colors.grey, Colors.black),
+                    calculator('=', Colors.amber, Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
             ),
           ),
         ),
@@ -129,13 +140,15 @@ class _calculatorPageState extends State<calculatorPage> {
     );
   }
 
-  Widget calculator(String btntxt,Color btncolor,Color txtcolor){
-    return  Container(
+  Widget calculator(String btntxt, Color btncolor, Color txtcolor) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.24,
       child: ElevatedButton(
-        onPressed: (){
+        onPressed: () {
           calculation(btntxt);
         },
-        child: Text('$btntxt',
+        child: Text(
+          '$btntxt',
           style: TextStyle(
             fontSize: 35,
             color: txtcolor,
@@ -149,7 +162,7 @@ class _calculatorPageState extends State<calculatorPage> {
   }
 
   //Calculator logic
-  dynamic text ='0';
+  dynamic text = '0';
   double numOne = 0;
   double numTwo = 0;
 
@@ -158,78 +171,69 @@ class _calculatorPageState extends State<calculatorPage> {
   dynamic opr = '';
   dynamic preOpr = '';
   void calculation(btnText) {
-
-
-    if(btnText  == 'AC') {
-      text ='0';
+    if (btnText == 'AC') {
+      text = '0';
       numOne = 0;
       numTwo = 0;
       result = '';
       finalResult = '0';
       opr = '';
       preOpr = '';
-
-    } else if( opr == '=' && btnText == '=') {
-
-      if(preOpr == '+') {
+    } else if (opr == '=' && btnText == '=') {
+      if (preOpr == '+') {
         finalResult = add();
-      } else if( preOpr == '-') {
+      } else if (preOpr == '-') {
         finalResult = sub();
-      } else if( preOpr == 'x') {
+      } else if (preOpr == 'x') {
         finalResult = mul();
-      } else if( preOpr == '/') {
+      } else if (preOpr == '/') {
         finalResult = div();
       }
-
-    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '/' || btnText == '=') {
-
-      if(numOne == 0) {
+    } else if (btnText == '+' ||
+        btnText == '-' ||
+        btnText == 'x' ||
+        btnText == '/' ||
+        btnText == '=') {
+      if (numOne == 0) {
         numOne = double.parse(result);
       } else {
         numTwo = double.parse(result);
       }
 
-      if(opr == '+') {
+      if (opr == '+') {
         finalResult = add();
-      } else if( opr == '-') {
+      } else if (opr == '-') {
         finalResult = sub();
-      } else if( opr == 'x') {
+      } else if (opr == 'x') {
         finalResult = mul();
-      } else if( opr == '/') {
+      } else if (opr == '/') {
         finalResult = div();
       }
       preOpr = opr;
       opr = btnText;
       result = '';
-    }
-    else if(btnText == '%') {
+    } else if (btnText == '%') {
       result = numOne / 100;
       finalResult = doesContainDecimal(result);
-    } else if(btnText == '.') {
-      if(!result.toString().contains('.')) {
-        result = result.toString()+'.';
+    } else if (btnText == '.') {
+      if (!result.toString().contains('.')) {
+        result = result.toString() + '.';
       }
       finalResult = result;
-    }
-
-    else if(btnText == '+/-') {
-      result.toString().startsWith('-') ? result = result.toString().substring(1): result = '-'+result.toString();
+    } else if (btnText == '+/-') {
+      result.toString().startsWith('-')
+          ? result = result.toString().substring(1)
+          : result = '-' + result.toString();
       finalResult = result;
-
-    }
-
-    else {
+    } else {
       result = result + btnText;
       finalResult = result;
     }
 
-
     setState(() {
       text = finalResult;
     });
-
   }
-
 
   String add() {
     result = (numOne + numTwo).toString();
@@ -242,23 +246,23 @@ class _calculatorPageState extends State<calculatorPage> {
     numOne = double.parse(result);
     return doesContainDecimal(result);
   }
+
   String mul() {
     result = (numOne * numTwo).toString();
     numOne = double.parse(result);
     return doesContainDecimal(result);
   }
+
   String div() {
     result = (numOne / numTwo).toString();
     numOne = double.parse(result);
     return doesContainDecimal(result);
   }
 
-
   String doesContainDecimal(dynamic result) {
-
-    if(result.toString().contains('.')) {
+    if (result.toString().contains('.')) {
       List<String> splitDecimal = result.toString().split('.');
-      if(!(int.parse(splitDecimal[1]) > 0))
+      if (!(int.parse(splitDecimal[1]) > 0))
         return result = splitDecimal[0].toString();
     }
     return result;
